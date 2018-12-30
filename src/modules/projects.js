@@ -22,7 +22,7 @@ module.exports = {
   },
 
   getProjectConfigFiles: function (projectsDir) {
-    var filter = '*.yml'
+    var filter = '.yml'
     var projectFiles = []
 
     if (!fs.existsSync(projectsDir)) {
@@ -35,7 +35,7 @@ module.exports = {
       var stat = fs.lstatSync(filename)
       if (stat.isDirectory()) {
         fromDir(filename, filter)
-      } else if (filename.indexOf(filter) >= 0) {
+      } else if (filename.indexOf(filter) === (filename.length-4)) {
         projectFiles.push(filename)
       }
     }
