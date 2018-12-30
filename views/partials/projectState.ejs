@@ -1,0 +1,9 @@
+<!-- views/partials/projectState.ejs -->
+
+<% if(state == 'error') { %>
+    <img data-src="holder.js/32x32?theme=thumb&bg=ff0000&size=1" alt="error" class="mr-2 rounded"> 
+<% } else if (state === 'success') { %>
+    <img data-src="holder.js/32x32?theme=thumb&bg=00ff00&size=1" alt="success" class="mr-2 rounded"> 
+<% } else { %>
+    <img data-src="holder.js/32x32?theme=thumb&bg=000000&size=1" alt="unknown" class="mr-2 rounded"> 
+<% } %>

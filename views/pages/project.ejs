@@ -1,0 +1,36 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="bg-light">
+    <main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 bg-purple rounded shadow-sm">
+        <div class="lh-100">
+          <h1 class="mb-0 lh-100"><%= config.serverName %></h1>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h3 class="border-bottom border-gray pb-2 mb-0"><%= project.name %> </h3>
+        <div class="media text-muted pt-3">
+            <%- include('../partials/projectState', {state: project.lastDeploy.status}) %>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><%= project.description %> </p>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><strong>Project directory: </strong><%= project.projectDir %> </p>
+        </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><strong>State: </strong><%= project.lastDeploy.status %> </p>
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><strong>Date: </strong><%= project.lastDeploy.date %> </p>
+        </div>
+        <div class="media text-muted pt-3">
+            <pre><%= project.lastDeploy.log %></pre>
+        </div>
+      </div>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>

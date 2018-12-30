@@ -1,0 +1,4 @@
+serverName: My deployer
+port: 8080
+projectsDir: config/projects
+slackWebhookUrl: 

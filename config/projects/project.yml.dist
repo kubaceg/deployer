@@ -1,0 +1,8 @@
+name: Project name
+description: project description
+notifications:
+  - slack
+projectDir: /absolute/project/dir
+commands:
+  - ls -l
+  - git pull
