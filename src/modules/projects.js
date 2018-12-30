@@ -22,7 +22,7 @@ module.exports = {
   },
 
   getProjectConfigFiles: function (projectsDir) {
-    var filter = '.yml'
+    var filter = '*.yml'
     var projectFiles = []
 
     if (!fs.existsSync(projectsDir)) {
