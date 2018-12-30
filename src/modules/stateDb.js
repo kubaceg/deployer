@@ -9,7 +9,7 @@ module.exports = {
     initialize: function(projectsConfig) {
         for(projectId in projectsConfig) {
             if(!db.get('projects').find({id: projectId}).value()) {
-                db.getpush({id: projectId}).write()
+                db.get('projects').push({id: projectId}).write()
             }
         }
     },
