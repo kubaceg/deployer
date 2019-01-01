@@ -38,17 +38,18 @@ app.get('/deploy/:projectIdentifier', function (req, res) {
   var project = projectsConfig[projectIdentifier]
 
   stateDb.runProjectDeploy(projectIdentifier, project.name)
-  var executeProjectPromise = execute.executeProjectCommands(project)
-  executeProjectPromise.then(
-    function (result) {
+  async function exec() {
+    try {
+      await execute.executeProjectCommands(project)
       stateDb.changeProjectState(projectIdentifier, 'success', result)
       slack.sendNotification('Project ' + project.name + ' deployed succesfully!', config);
-    },
-    function (err) {
+    } catch (err) {
       stateDb.changeProjectState(projectIdentifier, 'error', err.toString())
       slack.sendNotification('Project ' + project.name + ' deploy error!', config);
     }
-  )
+  }
+
+  exec()
 
   res.send('OK')
 })
